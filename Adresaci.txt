@@ -3,3 +3,6 @@
 3|3|Agata|Pieczatkowska|789 789 789|agata@piecztakowska.pl|Wilhelmow|
 4|4|Agata|Pieczatkowska|789 789 789|agata@piecztakowska.pl|Wilhelmow|
 5|5|Agata|Pieczatkowska|789 789 789|agata@piecztakowska.pl|Wilhelmow|
+5|4|Agnieszka|Radecka|234 234 234|agnieszka@radecka.pl|Wilhelmow 3|
+6|4|Grazyna|Hubek|23 2345 234|grazyna@hubek.pl|Warszawa|
+4|3|Katarzyna|Oniszk|234 234 234|katarzyna@oniszk.pl|Warszawa|

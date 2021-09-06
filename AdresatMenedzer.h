@@ -5,7 +5,7 @@
 #include <vector>
 #include <windows.h>
 #include "Adresat.h"
-#include "PlikZUzytkownikami.h"
+
 #include "PlikZAdresatami.h"
 #include "MetodyPomocnicze.h"
 
@@ -13,21 +13,21 @@ using namespace std;
 
 class AdresatMenedzer
 {
-
-    vector <Adresat> adresaci;
+    const int ID_ZALOGOWANEGO_UZYTKOWNIKA;
     int idOstatniegoAdresata;
+    vector <Adresat> adresaci;
     PlikZAdresatami plikZAdresatami;
 
+    Adresat podajDaneNowegoAdresata();
+    void wyswietlDaneAdresata(Adresat adresat);
 public:
-    AdresatMenedzer(string nazwaPlikuZAdresatami):plikZAdresatami(nazwaPlikuZAdresatami)
+    AdresatMenedzer(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika)
+        :plikZAdresatami(nazwaPlikuZAdresatami),ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
     {
-    idOstatniegoAdresata=0;
+        adresaci=plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 
     };
-
-    Adresat podajDaneNowegoAdresata();
     void dodajAdresata();
-    void wyswietlDaneAdresata(Adresat adresat);
     void wyswietlWszystkichAdresatow();
     void wczytajAdresatowZPliku();
 };
