@@ -33,5 +33,6 @@ public:
     void ustawIdZalogowanegoUzytkownika();
     void wylogowanieUzytkownika();
     int pobierzIdZalogowanegoUzytkownika();
+    char wybierzOpcjeZMenuGlownego();
 };
 #endif

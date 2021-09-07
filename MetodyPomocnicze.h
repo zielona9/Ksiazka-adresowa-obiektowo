@@ -15,5 +15,6 @@ class MetodyPomocnicze
     string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
     string pobierzLiczbe(string tekst, int pozycjaZnaku);
     int konwersjaStringNaInt(string liczba);
+    static char wczytajZnak();
 };
 #endif
