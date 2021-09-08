@@ -29,5 +29,9 @@ public:
     void wylogowanieUzytkownika();
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();
+    void wyborOpcjiMenuPoczatkowym();
+    void edytujAdresata();
+    void usunAdresata();
+
 };
 #endif
