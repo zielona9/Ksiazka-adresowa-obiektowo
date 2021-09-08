@@ -1,7 +1,6 @@
 1|1|Agata|Pieczatkowska|789 789 789|agata@piecztakowska.pl|Wilhelmow|
 2|2|Agata|Pieczatkowska|789 789 789|agata@piecztakowska.pl|Wilhelmow|
 3|3|Agata|Pieczatkowska|789 789 789|agata@piecztakowska.pl|Wilhelmow|
-4|4|Aniela|Radecka|234 234 234|agnieszka@radecka.pl|Wilhelmow 3|
-6|4|Grazyna|Hubek|23 2345 234|grazyna@hubek.pl|Warszawa|
+4|4|Agata|Radecka|234 234 234|agnieszka@radecka.pl|Wilhelmow 3|
 7|3|Katarzyna|Oniszk|234 234 234|katarzyna@oniszk.pl|Warszawa|
-8|4|Agnieszka|Pietrucha|345 345 345|aga@pietrucha.pl|Krakow|
+9|4|Agata|Radecka|312 324 111|agata@radecka.pl|Poznan|

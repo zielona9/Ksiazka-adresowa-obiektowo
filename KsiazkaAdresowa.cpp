@@ -12,41 +12,44 @@ void KsiazkaAdresowa::wypiszWszystkichUzytkownikow()
 void KsiazkaAdresowa::logowanieUzytkownika()
 {
     char wybor;
+    bool logowanie=true;
     uzytkownikMenedzer.logowanieUzytkownika();
     if(uzytkownikMenedzer.czyUzytkownikJestZalogowany())
     {
         adresatMenedzer= new AdresatMenedzer(NAZWA_PLIKU_Z_ADRESATAMI,uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
-     wybor = uzytkownikMenedzer.wybierzOpcjeZMenuUzytkownika();
 
-            switch (wybor)
+    while(logowanie==true)
+      {
+            wybor = uzytkownikMenedzer.wybierzOpcjeZMenuUzytkownika();
+         switch (wybor)
             {
             case '1':
-                dodajAdresata();
+                 dodajAdresata();
                 break;
             case '2':
-               // wyszukajAdresatowPoImieniu(adresaci);
+                adresatMenedzer->wyszukajAdresatowPoImieniu();
                 break;
             case '3':
-               // wyszukajAdresatowPoNazwisku(adresaci);
+              adresatMenedzer->wyszukajAdresatowPoNazwisku();
                 break;
             case '4':
-                wyswietlWszystkichAdresatow();
+                 adresatMenedzer->wyswietlWszystkichAdresatow();
                 break;
             case '5':
-                 usunAdresata();
+                  adresatMenedzer->usunAdresata();
                 break;
             case '6':
-               edytujAdresata();
+                adresatMenedzer->edytujAdresata();
                 break;
             case '7':
-                zmianaHasla();
+                uzytkownikMenedzer.zmianaHaslaZalogowanegoUzytkownika();
                 break;
             case '8':
                 wylogowanieUzytkownika();
+                logowanie=false;
                 break;
             }
-
-
+      }
     }
 }
 void KsiazkaAdresowa::wylogowanieUzytkownika()
@@ -55,10 +58,7 @@ void KsiazkaAdresowa::wylogowanieUzytkownika()
     delete adresatMenedzer;
     adresatMenedzer= NULL;
 }
-void KsiazkaAdresowa::zmianaHasla()
-{
-    uzytkownikMenedzer.zmianaHaslaZalogowanegoUzytkownika();
-}
+
 void KsiazkaAdresowa::dodajAdresata()
 {
     if(uzytkownikMenedzer.czyUzytkownikJestZalogowany()==TRUE)
@@ -70,25 +70,17 @@ void KsiazkaAdresowa::dodajAdresata()
     }
 
 }
-void KsiazkaAdresowa::usunAdresata()
-{
-    adresatMenedzer->usunAdresata();
-}
-void KsiazkaAdresowa::edytujAdresata()
-{
-    adresatMenedzer->edytujAdresata();
-}
-void KsiazkaAdresowa::wyswietlWszystkichAdresatow()
-{
-    adresatMenedzer->wyswietlWszystkichAdresatow();
-}
-
 
 void KsiazkaAdresowa::wyborOpcjiMenuPoczatkowym()
 {
     char wybor;
-    wybor = uzytkownikMenedzer.wybierzOpcjeZMenuGlownego();
-     switch (wybor)
+    bool menu=true;
+
+     while(menu)
+     {
+         wybor = uzytkownikMenedzer.wybierzOpcjeZMenuGlownego();
+
+         switch (wybor)
             {
             case '1':
                 rejestracjaUzytkownika();
@@ -98,10 +90,12 @@ void KsiazkaAdresowa::wyborOpcjiMenuPoczatkowym()
                 break;
             case '9':
                 exit(0);
+                menu=false;
                 break;
             default:
                 cout << endl << "Nie ma takiej opcji w menu." << endl << endl;
                 system("pause");
                 break;
             }
+     }
 }
