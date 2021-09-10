@@ -250,7 +250,7 @@ int PlikZAdresatami::pobierzIdOstatniegoAdresata(vector <Adresat> adresaci)
       int idOstatniegoAdresata = 0;
       if(adresaci.size()!=0)
       {
-         idOstatniegoAdresata= adresaci[adresaci.size()-1].pobierzId();
+         idOstatniegoAdresata= pobierzZPlikuIdOstatniegoAdresata();
       }
       return idOstatniegoAdresata;
 }
