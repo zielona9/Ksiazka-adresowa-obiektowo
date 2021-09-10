@@ -7,7 +7,7 @@ using namespace std;
 
 class Uzytkownik
 {
-   int id;
+    int id;
     string login, haslo;
 public:
     void ustawId(int noweId);

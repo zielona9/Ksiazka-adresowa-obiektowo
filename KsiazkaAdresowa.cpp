@@ -1,14 +1,6 @@
 #include "KsiazkaAdresowa.h"
 
 
-void KsiazkaAdresowa::rejestracjaUzytkownika()
-{
-    uzytkownikMenedzer.rejestracjaUzytkownika();
-}
-void KsiazkaAdresowa::wypiszWszystkichUzytkownikow()
-{
-    uzytkownikMenedzer.wypiszWszystkichUzytkownikow();
-}
 void KsiazkaAdresowa::logowanieUzytkownika()
 {
     char wybor;
@@ -83,7 +75,7 @@ void KsiazkaAdresowa::wyborOpcjiMenuPoczatkowym()
          switch (wybor)
             {
             case '1':
-                rejestracjaUzytkownika();
+                uzytkownikMenedzer.rejestracjaUzytkownika();
                 break;
             case '2':
                 logowanieUzytkownika();

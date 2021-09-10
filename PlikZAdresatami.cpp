@@ -1,14 +1,6 @@
 #include "PlikZAdresatami.h"
 
-bool PlikZAdresatami::czyPlikJestPusty()
-{
-    fstream plikTekstowy;
-    plikTekstowy.seekg(0, ios::end);
-    if (plikTekstowy.tellg() == 0)
-        return true;
-    else
-        return false;
-}
+
 string PlikZAdresatami::zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat)
 {
     string liniaZDanymiAdresata = "";
@@ -34,7 +26,7 @@ bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
     {
         liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
 
-        if (czyPlikJestPusty() == true)
+        if (MetodyPomocnicze::czyPlikJestPusty(plikTekstowy) == true)
         {
             plikTekstowy << liniaZDanymiAdresata;
         }
@@ -51,35 +43,7 @@ bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
     system("pause");
 }
 
-int PlikZAdresatami::zwrocNumerLiniiSzukanegoAdresata(int idAdresata)
-{
-    bool czyIstniejeAdresat = false;
-    int numerLiniiWPlikuTekstowym = 1;
-    string daneJednegoAdresataOddzielonePionowymiKreskami = "";
-    fstream plikTekstowy;
-    plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::in);
 
-    if (plikTekstowy.good() == true && idAdresata != 0)
-    {
-        while(getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami))
-        {
-            if(idAdresata == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneJednegoAdresataOddzielonePionowymiKreskami))
-            {
-                czyIstniejeAdresat = true;
-                plikTekstowy.close();
-                return numerLiniiWPlikuTekstowym;
-            }
-            else
-                numerLiniiWPlikuTekstowym++;
-        }
-        if (czyIstniejeAdresat = false)
-        {
-            plikTekstowy.close();
-            return 0;
-        }
-    }
-    return 0;
-}
 
 void PlikZAdresatami::edytujWybranaLinieWPliku(int numerEdytowanejLinii, string liniaZDanymiAdresataOddzielonePionowymiKreskami)
 {
@@ -117,22 +81,56 @@ void PlikZAdresatami::edytujWybranaLinieWPliku(int numerEdytowanejLinii, string 
         zmienNazwePliku(nazwaTymczasowegoPlikuZAdresatami, nazwaPlikuZAdresatami);
     }
 }
-void PlikZAdresatami::usunWybranaLinieWPliku(int numerUsuwanejLinii)
+
+int PlikZAdresatami::zwrocNumerLiniiSzukanegoAdresata(int idAdresata)
+{
+    bool czyIstniejeAdresat = false;
+    int numerLiniiWPlikuTekstowym = 1;
+    string daneJednegoAdresataOddzielonePionowymiKreskami = "";
+    fstream plikTekstowy;
+    plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::in);
+
+    if (plikTekstowy.good() == true && idAdresata != 0)
+    {
+        while(getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami))
+        {
+            if(idAdresata == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneJednegoAdresataOddzielonePionowymiKreskami))
+            {
+                czyIstniejeAdresat = true;
+                plikTekstowy.close();
+                return numerLiniiWPlikuTekstowym;
+            }
+            else
+                numerLiniiWPlikuTekstowym++;
+        }
+        if (czyIstniejeAdresat = false)
+        {
+            plikTekstowy.close();
+            return 0;
+        }
+    }
+    return 0;
+}
+
+void PlikZAdresatami::usunWybranaLinieWPliku(int idAdresata)
 {
     fstream odczytywanyPlikTekstowy, tymczasowyPlikTekstowy;
     string wczytanaLinia = "";
     int numerWczytanejLinii = 1;
-
+    int numerUsuwanejLinii=0;
     odczytywanyPlikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::in);
     tymczasowyPlikTekstowy.open(nazwaTymczasowegoPlikuZAdresatami.c_str(), ios::out | ios::app);
 
-    if (odczytywanyPlikTekstowy.good() == true && numerUsuwanejLinii != 0)
+    if (odczytywanyPlikTekstowy.good() == true )
     {
         while (getline(odczytywanyPlikTekstowy, wczytanaLinia))
         {
             // Tych przypadkow jest tyle, gdyz chcemy osiagnac taki efekt,
             // aby na koncu pliku nie bylo pustej linii
-            if (numerWczytanejLinii == numerUsuwanejLinii) {}
+            if(idAdresata == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia))
+            {
+                numerUsuwanejLinii=numerWczytanejLinii;
+            }
             else if (numerWczytanejLinii == 1 && numerWczytanejLinii != numerUsuwanejLinii)
                 tymczasowyPlikTekstowy << wczytanaLinia;
             else if (numerWczytanejLinii == 2 && numerUsuwanejLinii == 1)

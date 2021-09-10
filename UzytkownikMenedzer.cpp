@@ -135,7 +135,7 @@ int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika()
 }
 void UzytkownikMenedzer::wylogowanieUzytkownika()
 {
- uzytkownicy.clear();
+
  idZalogowanegoUzytkownika=0;
  cout<<"Poprawnie wylogowano uzytkownika"<<endl;
 }

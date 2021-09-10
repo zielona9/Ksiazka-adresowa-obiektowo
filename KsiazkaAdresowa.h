@@ -12,6 +12,10 @@ class KsiazkaAdresowa
     AdresatMenedzer *adresatMenedzer;
     const string NAZWA_PLIKU_Z_ADRESATAMI;
 
+    void dodajAdresata();
+    void wylogowanieUzytkownika();
+    void logowanieUzytkownika();
+
 public:
     KsiazkaAdresowa(string nazwaPlikuZUzytkownikami,string nazwaPlikuZAdresatami):uzytkownikMenedzer(nazwaPlikuZUzytkownikami),NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
     {
@@ -22,16 +26,8 @@ public:
         delete adresatMenedzer;
         adresatMenedzer=NULL;
     }
-    void rejestracjaUzytkownika();
-    void wypiszWszystkichUzytkownikow();
-    void logowanieUzytkownika();
-    void zmianaHasla();
-    void wylogowanieUzytkownika();
-    void dodajAdresata();
-    void wyswietlWszystkichAdresatow();
+
     void wyborOpcjiMenuPoczatkowym();
-    void edytujAdresata();
-    void usunAdresata();
 
 };
 #endif
