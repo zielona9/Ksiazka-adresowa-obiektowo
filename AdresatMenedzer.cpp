@@ -123,9 +123,9 @@ void AdresatMenedzer::zaktualizujDaneWybranegoAdresata(Adresat adresat, int idEd
     int numerLiniiEdytowanegoAdresata = 0;
     string liniaZDanymiAdresata = "";
 
-    numerLiniiEdytowanegoAdresata = plikZAdresatami.zwrocNumerLiniiSzukanegoAdresata(idEdytowanegoAdresata);
+    //numerLiniiEdytowanegoAdresata = plikZAdresatami.zwrocNumerLiniiSzukanegoAdresata(idEdytowanegoAdresata);
     liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
-    plikZAdresatami.edytujWybranaLinieWPliku(numerLiniiEdytowanegoAdresata, liniaZDanymiAdresata);
+    plikZAdresatami.edytujWybranaLinieWPliku(idEdytowanegoAdresata, liniaZDanymiAdresata);
 
     cout << endl << "Dane zostaly zaktualizowane." << endl << endl;
 }
@@ -269,8 +269,7 @@ int AdresatMenedzer::usunAdresata()
             znak = MetodyPomocnicze::wczytajZnak();
             if (znak == 't')
             {
-               // numerLiniiUsuwanegoAdresata = plikZAdresatami.zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata);
-                plikZAdresatami.usunWybranaLinieWPliku(idUsuwanegoAdresata);
+               plikZAdresatami.usunWybranaLinieWPliku(idUsuwanegoAdresata);
                 adresaci.erase(adresaci.begin()+i);
                 cout << endl << endl << "Szukany adresat zostal USUNIETY" << endl << endl;
                 system("pause");

@@ -33,8 +33,7 @@ public:
     bool dopiszAdresataDoPliku(Adresat adresat);
     int pobierzIdOstatniegoAdresata(vector <Adresat> adresaci);
     int pobierzZPlikuIdOstatniegoAdresata();
-    int zwrocNumerLiniiSzukanegoAdresata(int idAdresata);
-    void edytujWybranaLinieWPliku(int numerEdytowanejLinii, string liniaZDanymiAdresataOddzielonePionowymiKreskami);
+    void edytujWybranaLinieWPliku(int idAdresata, string liniaZDanymiAdresataOddzielonePionowymiKreskami);
     void usunWybranaLinieWPliku(int idAdresata);
 };
 #endif

@@ -45,7 +45,7 @@ bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
 
 
 
-void PlikZAdresatami::edytujWybranaLinieWPliku(int numerEdytowanejLinii, string liniaZDanymiAdresataOddzielonePionowymiKreskami)
+void PlikZAdresatami::edytujWybranaLinieWPliku(int idAdresata, string liniaZDanymiAdresataOddzielonePionowymiKreskami)
 {
     fstream odczytywanyPlikTekstowy, tymczasowyPlikTekstowy;
     string wczytanaLinia = "";
@@ -58,7 +58,7 @@ void PlikZAdresatami::edytujWybranaLinieWPliku(int numerEdytowanejLinii, string 
     {
         while (getline(odczytywanyPlikTekstowy, wczytanaLinia))
         {
-            if (numerWczytanejLinii == numerEdytowanejLinii)
+             if(idAdresata == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia))
             {
                 if (numerWczytanejLinii == 1)
                     tymczasowyPlikTekstowy << liniaZDanymiAdresataOddzielonePionowymiKreskami;
@@ -82,35 +82,6 @@ void PlikZAdresatami::edytujWybranaLinieWPliku(int numerEdytowanejLinii, string 
     }
 }
 
-int PlikZAdresatami::zwrocNumerLiniiSzukanegoAdresata(int idAdresata)
-{
-    bool czyIstniejeAdresat = false;
-    int numerLiniiWPlikuTekstowym = 1;
-    string daneJednegoAdresataOddzielonePionowymiKreskami = "";
-    fstream plikTekstowy;
-    plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::in);
-
-    if (plikTekstowy.good() == true && idAdresata != 0)
-    {
-        while(getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami))
-        {
-            if(idAdresata == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneJednegoAdresataOddzielonePionowymiKreskami))
-            {
-                czyIstniejeAdresat = true;
-                plikTekstowy.close();
-                return numerLiniiWPlikuTekstowym;
-            }
-            else
-                numerLiniiWPlikuTekstowym++;
-        }
-        if (czyIstniejeAdresat = false)
-        {
-            plikTekstowy.close();
-            return 0;
-        }
-    }
-    return 0;
-}
 
 void PlikZAdresatami::usunWybranaLinieWPliku(int idAdresata)
 {
