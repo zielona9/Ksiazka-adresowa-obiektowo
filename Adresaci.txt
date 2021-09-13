@@ -1,6 +1,5 @@
-1|1|Agata|Pieczatkowska|789 789 789|agata@piecztakowska.pl|Wilhelmow|
-3|3|Agata|Pieczatkowska|789 789 789|agata@piecztakowska.pl|Wilhelmow|
-7|3|Katarzyna|Oniszk|234 234 234|katarzyna@oniszk.pl|Warszawa|
-8|4|Agnieszka|Rupiewicz|234 234 233|agnieszka@rupiewicz.pl|Huta|
-9|4|Ula|Jonczyk|234 234 234|ula@jonczyk.pl|Warszawa|
-10|1|Ula|Hula|234 234 234|ula@hula.pl|Kalisz|
+
+1|1|Agata|Radecka|345 45 333|agata@wp.pl|Falenty|
+3|2|Norbert|Grzyb|234 2344|norbert@grzyb.pl|Rzeszow|
+4|2|Nadia|Pietruszka|234 555 123|nadia@pietruszka.pl|Wroclaw|
+5|1|Hipolit|Grzywna|34 2222  333|hipolit@grzywa.pl|Hipolitowa|

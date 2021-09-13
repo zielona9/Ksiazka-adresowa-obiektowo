@@ -1,19 +1,20 @@
-#ifndef PLIKZADRESATAMI_H
-#define PLIKZADRESATAMI_H
+#ifndef _PLIKZADRESATAMI_H
+#define _PLIKZADRESATAMI_H
 
 #include <iostream>
 #include <vector>
+#include <fstream>
 #include "MetodyPomocnicze.h"
 #include "Uzytkownik.h"
 #include "UzytkownikMenedzer.h"
 #include "Adresat.h"
-#include <fstream>
+#include "PlikTekstowy.h"
 
 using namespace std;
 
-class PlikZAdresatami
+class PlikZAdresatami : public PlikTekstowy
 {
-    const string nazwaPlikuZAdresatami;
+    private:
     string nazwaTymczasowegoPlikuZAdresatami;
 
     int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
@@ -25,7 +26,7 @@ class PlikZAdresatami
 
 
 public:
-    PlikZAdresatami(string NAZWAPLIKUZADRESATAMI):nazwaPlikuZAdresatami(NAZWAPLIKUZADRESATAMI)
+    PlikZAdresatami(string nazwaPliku):PlikTekstowy(nazwaPliku)
     {
         nazwaTymczasowegoPlikuZAdresatami = "Adresaci_tymczasowo.txt";
     };

@@ -20,13 +20,13 @@ bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
 {
     string liniaZDanymiAdresata = "";
     fstream plikTekstowy;
-    plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::out | ios::app);
+    plikTekstowy.open(pobierzNazwePliku().c_str(), ios::out | ios::app);
 
     if (plikTekstowy.good() == true)
     {
         liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
 
-        if (MetodyPomocnicze::czyPlikJestPusty(plikTekstowy) == true)
+        if (czyPlikJestPusty() == true)
         {
             plikTekstowy << liniaZDanymiAdresata;
         }
@@ -51,7 +51,7 @@ void PlikZAdresatami::edytujWybranaLinieWPliku(int idAdresata, string liniaZDany
     string wczytanaLinia = "";
     int numerWczytanejLinii = 1;
 
-    odczytywanyPlikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::in);
+    odczytywanyPlikTekstowy.open(pobierzNazwePliku().c_str(), ios::in);
     tymczasowyPlikTekstowy.open(nazwaTymczasowegoPlikuZAdresatami.c_str(), ios::out | ios::app);
 
     if (odczytywanyPlikTekstowy.good() == true)
@@ -77,8 +77,8 @@ void PlikZAdresatami::edytujWybranaLinieWPliku(int idAdresata, string liniaZDany
         odczytywanyPlikTekstowy.close();
         tymczasowyPlikTekstowy.close();
 
-        usunPlik(nazwaPlikuZAdresatami);
-        zmienNazwePliku(nazwaTymczasowegoPlikuZAdresatami, nazwaPlikuZAdresatami);
+        usunPlik(pobierzNazwePliku());
+        zmienNazwePliku(nazwaTymczasowegoPlikuZAdresatami, pobierzNazwePliku());
     }
 }
 
@@ -89,7 +89,7 @@ void PlikZAdresatami::usunWybranaLinieWPliku(int idAdresata)
     string wczytanaLinia = "";
     int numerWczytanejLinii = 1;
     int numerUsuwanejLinii=0;
-    odczytywanyPlikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::in);
+    odczytywanyPlikTekstowy.open(pobierzNazwePliku().c_str(), ios::in);
     tymczasowyPlikTekstowy.open(nazwaTymczasowegoPlikuZAdresatami.c_str(), ios::out | ios::app);
 
     if (odczytywanyPlikTekstowy.good() == true )
@@ -115,8 +115,8 @@ void PlikZAdresatami::usunWybranaLinieWPliku(int idAdresata)
         odczytywanyPlikTekstowy.close();
         tymczasowyPlikTekstowy.close();
 
-        usunPlik(nazwaPlikuZAdresatami);
-        zmienNazwePliku(nazwaTymczasowegoPlikuZAdresatami, nazwaPlikuZAdresatami);
+        usunPlik(pobierzNazwePliku());
+        zmienNazwePliku(nazwaTymczasowegoPlikuZAdresatami, pobierzNazwePliku());
     }
 }
 void PlikZAdresatami::usunPlik(string nazwaPlikuZRozszerzeniem)
@@ -137,7 +137,7 @@ int PlikZAdresatami::pobierzZPlikuIdOstatniegoAdresata()
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
     string daneOstaniegoAdresataWPliku = "";
     fstream plikTekstowy;
-    plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::in);
+    plikTekstowy.open(pobierzNazwePliku().c_str(), ios::in);
 
     if (plikTekstowy.good() == true)
     {
@@ -162,7 +162,7 @@ vector <Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
     string daneOstaniegoAdresataWPliku = "";
     fstream plikTekstowy;
-    plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::in);
+    plikTekstowy.open(pobierzNazwePliku().c_str(), ios::in);
 
     if (plikTekstowy.good() == true)
     {
@@ -248,9 +248,9 @@ Adresat PlikZAdresatami::pobierzDaneAdresata(string daneAdresataOddzielonePionow
 int PlikZAdresatami::pobierzIdOstatniegoAdresata(vector <Adresat> adresaci)
 {
       int idOstatniegoAdresata = 0;
-      if(adresaci.size()!=0)
-      {
+
+
          idOstatniegoAdresata= pobierzZPlikuIdOstatniegoAdresata();
-      }
+
       return idOstatniegoAdresata;
 }
